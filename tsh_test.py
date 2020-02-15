@@ -9,22 +9,29 @@ def read_txt():
     for line in lines:
         words = line.rstrip()
         patient_data.append(words)
-        #f1 = lines[0]
-        #print(lines.index(line))
     single_patient(patient_data)
 
 
 def single_patient(data_input):
     # name, age, gender, TSH: numbers
-    name = data_input[0]
-    age = data_input[1]
-    sex = data_input[2]
-    tsh = data_input[3]
-    new_patient = {"name": name,
-                   "age": age,
-                   "sex": sex,
-                   "TSH results": tsh}
-    print(new_patient)
+    num_lines = len(data_input)-1
+    num_patients = int((len(data_input) - 1) / 4)
+    new_patient = {}
+    patient_number = 0
+    line_number = 0
+    for line in data_input:
+        if line_number % 4 == 0:
+            new_patient[patient_number] = {}
+            new_patient[patient_number]["name"] = line
+        if line_number % 4 == 1:
+            new_patient[patient_number]["age"] = line
+        if line_number % 4 == 2:
+            new_patient[patient_number]["sex"] = line
+        if line_number % 4 == 3:
+            new_patient[patient_number]["tsh"] = line
+            print(new_patient[patient_number])
+            patient_number += 1
+        line_number = line_number + 1
 
 
 if __name__ == "__main__":
