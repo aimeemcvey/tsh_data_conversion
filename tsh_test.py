@@ -5,12 +5,14 @@ import json
 def read_txt():
     with open("sample_data.txt", "r+") as f:
         lines = f.readlines()
-    patient_data = {}
-    length = len(lines)
+    patient_data = list()
     for line in lines:
+        words = line.rstrip()
+        patient_data.append(words)
         #f1 = lines[0]
-        line = line.rstrip()
-        print(line)
+        #print(lines.index(line))
+    print(patient_data)
+
     # name, age, gender, TSH: numbers
 
 
