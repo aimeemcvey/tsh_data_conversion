@@ -3,12 +3,15 @@ import json
 
 
 def read_txt():
-    in_file = open("sample_data.txt", "r")
-    in_file.read()
+    with open("sample_data.txt", "r+") as f:
+        lines = f.readlines()
+    patient_data = {}
+    length = len(lines)
+    for line in lines:
+        #f1 = lines[0]
+        line = line.rstrip()
+        print(line)
     # name, age, gender, TSH: numbers
-    # new_patient.name = new_patient["first name"]
-    # print(new_patient.name)
-    # in_file.close()
 
 
 if __name__ == "__main__":
