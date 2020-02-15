@@ -28,7 +28,7 @@ def single_patient(data_input):
         if line_number % 4 == 2:
             new_patient[patient_number]["sex"] = line
         if line_number % 4 == 3:
-            new_patient[patient_number]["tsh"] = line
+            new_patient[patient_number]["TSH"] = line
             print(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
