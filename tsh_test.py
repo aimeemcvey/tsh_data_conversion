@@ -13,9 +13,6 @@ def read_txt():
 
 
 def single_patient(data_input):
-    # name, age, gender, TSH: numbers
-    num_lines = len(data_input)-1
-    num_patients = int((len(data_input) - 1) / 4)
     new_patient = {}
     patient_number = 0
     line_number = 0
@@ -32,10 +29,9 @@ def single_patient(data_input):
             new_patient[patient_number]["TSH"] = cut_line
             diagnosis = diagnose_tsh(cut_line)
             new_patient[patient_number]["diagnosis"] = diagnosis
-            print(new_patient[patient_number])
+            # print(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
-    # print(new_patient)
     return new_patient
 
 
@@ -50,13 +46,10 @@ def diagnose_tsh(line):
     max_val = max(line)
     min_val = min(line)
     if min_val < 1.0:
-        # print("hyperthyroidism")
         diagnosis = "hyperthyroidism"
     elif max_val > 4.0:
-        # print("hypothyroidism")
         diagnosis = "hypothyroidism"
     elif min_val >= 1.0 and max_val <= 4.0:
-        # print("normal")
         diagnosis = "normal thyroid function"
     return diagnosis
 
