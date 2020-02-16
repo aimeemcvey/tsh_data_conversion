@@ -30,29 +30,30 @@ def single_patient(data_input):
         if line_number % 4 == 3:
             extract_tsh(line)
             new_patient[patient_number]["TSH"] = line
-            #print(new_patient[patient_number])
+            print(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
-    #print(new_patient)
+    # print(new_patient)
     return new_patient
 
 
 def extract_tsh(line):
-    print(line)
+    # print(line)
     line = line.split(",")
-    for n in line:
-        print(n)
-        if n == "TSH":
-            continue
-        if float(n) < 1.0:
-            print("hyperthyroidism")
-            return "hyperthyroidism"
-        elif float(n) > 4.0:
-            print("hypothyroidism")
-            return "hypothyroidism"
-        else:
-            print("normal")
-            return "normal thyroid function"
+    line.pop(0)  # get rid of TSH
+    # line = [float(i) for i in line]
+    # return line
+    max_val = float(max(line))
+    min_val = float(min(line))
+    if min_val < 1.0:
+        # print("hyperthyroidism")
+        diagnosis = "hyperthyroidism"
+    elif max_val > 4.0:
+        # print("hypothyroidism")
+        diagnosis = "hypothyroidism"
+    elif min_val >= 1.0 and max_val <= 4.0:
+        # print("normal")
+        diagnosis = "normal thyroid function"
 
 
 if __name__ == "__main__":
