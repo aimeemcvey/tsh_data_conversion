@@ -13,9 +13,6 @@ def read_txt():
 
 
 def single_patient(data_input):
-    # name, age, gender, TSH: numbers
-    num_lines = len(data_input)-1
-    num_patients = int((len(data_input) - 1) / 4)
     new_patient = {}
     patient_number = 0
     line_number = 0
@@ -28,10 +25,33 @@ def single_patient(data_input):
         if line_number % 4 == 2:
             new_patient[patient_number]["sex"] = line
         if line_number % 4 == 3:
-            new_patient[patient_number]["TSH"] = line
-            print(new_patient[patient_number])
+            cut_line = extract_tsh(line)
+            new_patient[patient_number]["TSH"] = cut_line
+            diagnosis = diagnose_tsh(cut_line)
+            new_patient[patient_number]["diagnosis"] = diagnosis
+            # print(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
+    return new_patient
+
+
+def extract_tsh(line):
+    line = line.split(",")
+    line.pop(0)  # get rid of TSH
+    line = [float(i) for i in line]
+    return line
+
+
+def diagnose_tsh(line):
+    max_val = max(line)
+    min_val = min(line)
+    if min_val < 1.0:
+        diagnosis = "hyperthyroidism"
+    elif max_val > 4.0:
+        diagnosis = "hypothyroidism"
+    elif min_val >= 1.0 and max_val <= 4.0:
+        diagnosis = "normal thyroid function"
+    return diagnosis
 
 
 if __name__ == "__main__":
