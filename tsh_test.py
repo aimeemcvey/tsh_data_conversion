@@ -30,9 +30,10 @@ def single_patient(data_input):
             diagnosis = diagnose_tsh(cut_line)
             new_patient[patient_number]["diagnosis"] = diagnosis
             # print(new_patient[patient_number])
+            save_json(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
-    return new_patient
+    # return new_patient
 
 
 def extract_tsh(line):
@@ -52,6 +53,11 @@ def diagnose_tsh(line):
     elif min_val >= 1.0 and max_val <= 4.0:
         diagnosis = "normal thyroid function"
     return diagnosis
+
+
+def save_json(patient):
+    #  filename = firstname-lastname.json
+    #  First Name, Last Name, Age (as #), Gender, Diagnosis, TSH
 
 
 if __name__ == "__main__":
