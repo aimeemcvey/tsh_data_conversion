@@ -31,7 +31,7 @@ def single_patient(data_input):
             cut_line = extract_tsh(line)
             new_patient[patient_number]["TSH"] = cut_line
             diagnosis = diagnose_tsh(cut_line)
-            print(diagnosis)
+            new_patient[patient_number]["diagnosis"] = diagnosis
             print(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
@@ -47,8 +47,8 @@ def extract_tsh(line):
 
 
 def diagnose_tsh(line):
-    max_val = float(max(line))
-    min_val = float(min(line))
+    max_val = max(line)
+    min_val = min(line)
     if min_val < 1.0:
         # print("hyperthyroidism")
         diagnosis = "hyperthyroidism"
