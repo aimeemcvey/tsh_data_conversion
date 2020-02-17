@@ -4,6 +4,10 @@
 def read_txt():
     with open("sample_data.txt", "r+") as f:
         lines = f.readlines()
+    edit_txt(lines)
+
+
+def edit_txt(lines):
     patient_data = list()
     for line in lines:
         words = line.rstrip()
