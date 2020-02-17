@@ -18,8 +18,12 @@ def single_patient(data_input):
     line_number = 0
     for line in data_input:
         if line_number % 4 == 0:
+            if line == "END":
+                continue
             new_patient[patient_number] = {}
-            new_patient[patient_number]["name"] = line
+            name = line.split()
+            new_patient[patient_number]["First Name"] = name[0]
+            new_patient[patient_number]["Last Name"] = name[1]
         if line_number % 4 == 1:
             new_patient[patient_number]["age"] = line
         if line_number % 4 == 2:
@@ -29,8 +33,8 @@ def single_patient(data_input):
             new_patient[patient_number]["TSH"] = cut_line
             diagnosis = diagnose_tsh(cut_line)
             new_patient[patient_number]["diagnosis"] = diagnosis
-            # print(new_patient[patient_number])
-            save_json(new_patient[patient_number])
+            print(new_patient[patient_number])
+            # save_json(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
     # return new_patient
@@ -56,7 +60,7 @@ def diagnose_tsh(line):
 
 
 def save_json(patient):
-    #  filename = firstname-lastname.json
+    filename = firstname-lastname.json
     #  First Name, Last Name, Age (as #), Gender, Diagnosis, TSH
 
 
