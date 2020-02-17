@@ -34,7 +34,7 @@ def single_patient(data_input):
             diagnosis = diagnose_tsh(cut_line)
             new_patient[patient_number]["diagnosis"] = diagnosis
             print(new_patient[patient_number])
-            # save_json(new_patient[patient_number])
+            save_json(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
     # return new_patient
@@ -60,7 +60,10 @@ def diagnose_tsh(line):
 
 
 def save_json(patient):
-    filename = firstname-lastname.json
+    first_name = patient.get("First Name")
+    last_name = patient.get("Last Name")
+    filename = "{}-{}.json" .format(first_name, last_name)
+    print(filename)
     #  First Name, Last Name, Age (as #), Gender, Diagnosis, TSH
 
 
