@@ -36,11 +36,9 @@ def single_patient(data_input):
             diagnosis = diagnose_tsh(cut_line)
             new_patient[patient_number]["Diagnosis"] = diagnosis
             new_patient[patient_number]["TSH"] = cut_line
-            print(new_patient[patient_number])
             save_json(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
-    # return new_patient
 
 
 def extract_tsh(line):
@@ -70,7 +68,6 @@ def save_json(patient):
     out_file = open(filename, 'w')
     json.dump(patient, out_file)
     out_file.close
-    #  First Name, Last Name, Age (as #), Gender, Diagnosis, TSH
 
 
 if __name__ == "__main__":
