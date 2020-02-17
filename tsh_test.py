@@ -24,7 +24,7 @@ def single_patient(data_input):
             new_patient[patient_number]["First Name"] = name[0]
             new_patient[patient_number]["Last Name"] = name[1]
         if line_number % 4 == 1:
-            new_patient[patient_number]["Age"] = line
+            new_patient[patient_number]["Age"] = int(line)
         if line_number % 4 == 2:
             new_patient[patient_number]["Gender"] = line
         if line_number % 4 == 3:
