@@ -1,5 +1,4 @@
 # TSH_test.py
-import json
 
 
 def read_txt():
@@ -25,14 +24,14 @@ def single_patient(data_input):
             new_patient[patient_number]["First Name"] = name[0]
             new_patient[patient_number]["Last Name"] = name[1]
         if line_number % 4 == 1:
-            new_patient[patient_number]["age"] = line
+            new_patient[patient_number]["Age"] = line
         if line_number % 4 == 2:
-            new_patient[patient_number]["sex"] = line
+            new_patient[patient_number]["Gender"] = line
         if line_number % 4 == 3:
             cut_line = extract_tsh(line)
-            new_patient[patient_number]["TSH"] = cut_line
             diagnosis = diagnose_tsh(cut_line)
-            new_patient[patient_number]["diagnosis"] = diagnosis
+            new_patient[patient_number]["Diagnosis"] = diagnosis
+            new_patient[patient_number]["TSH"] = cut_line
             print(new_patient[patient_number])
             save_json(new_patient[patient_number])
             patient_number += 1
@@ -60,10 +59,13 @@ def diagnose_tsh(line):
 
 
 def save_json(patient):
+    import json
     first_name = patient.get("First Name")
     last_name = patient.get("Last Name")
     filename = "{}-{}.json" .format(first_name, last_name)
-    print(filename)
+    out_file = open(filename, 'w')
+    json.dump(patient, out_file)
+    out_file.close
     #  First Name, Last Name, Age (as #), Gender, Diagnosis, TSH
 
 
