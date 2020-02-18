@@ -4,7 +4,8 @@
 def read_txt():
     with open("sample_data.txt", "r+") as f:
         lines = f.readlines()
-    edit_txt(lines)
+    patient_data = edit_txt(lines)
+    return patient_data
 
 
 def edit_txt(lines):
@@ -12,7 +13,7 @@ def edit_txt(lines):
     for line in lines:
         words = line.rstrip()
         patient_data.append(words)
-    single_patient(patient_data)
+    return patient_data
 
 
 def single_patient(data_input):
@@ -45,6 +46,7 @@ def extract_tsh(line):
     line = line.split(",")
     line.pop(0)  # get rid of TSH
     line = [float(i) for i in line]
+    line.sort()
     return line
 
 
@@ -71,4 +73,5 @@ def save_json(patient):
 
 
 if __name__ == "__main__":
-    read_txt()
+    list_text = read_txt()
+    single_patient(list_text)
