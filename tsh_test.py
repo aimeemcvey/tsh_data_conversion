@@ -14,6 +14,7 @@ def read_txt():
     with open("sample_data.txt", "r+") as f:
         lines = f.readlines()
     patient_data = edit_txt(lines)
+    single_patient(patient_data)
     return patient_data
 
 
@@ -30,12 +31,10 @@ def edit_txt(lines):
     Returns:
         list: all patient data without newlines
     """
-    print(lines)
     patient_data = list()
     for line in lines:
         words = line.rstrip()
         patient_data.append(words)
-    print(patient_data)
     return patient_data
 
 
@@ -147,5 +146,4 @@ def save_json(patient):
 
 
 if __name__ == "__main__":
-    list_text = read_txt()
-    single_patient(list_text)
+    read_txt()
