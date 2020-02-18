@@ -45,6 +45,7 @@ def extract_tsh(line):
     line = line.split(",")
     line.pop(0)  # get rid of TSH
     line = [float(i) for i in line]
+    line.sort()
     return line
 
 
