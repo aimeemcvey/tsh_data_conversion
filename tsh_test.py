@@ -134,7 +134,6 @@ def save_json(patient):
         JSON: categorized data and test results for each patient
     """
     import json
-    print(type(patient))
     first_name = patient.get("First Name")
     last_name = patient.get("Last Name")
     filename = "{}-{}.json" .format(first_name, last_name)
