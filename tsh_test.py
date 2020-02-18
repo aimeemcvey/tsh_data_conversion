@@ -2,7 +2,7 @@
 
 
 def read_txt():
-    """Read txt file of patient data
+    """Read text file of patient data
 
     Patient data file contains information for an unspecified
     number of patients, including name, age, gender, and TSH
@@ -19,7 +19,7 @@ def read_txt():
 
 
 def edit_txt(lines):
-    """Edit txt file of patient data to remove \n
+    """Edit text file of patient data to remove \n
 
     Patient data file contains information for an unspecified
     number of patients with each line of text separated by a
