@@ -34,6 +34,7 @@ def edit_txt(lines):
     for line in lines:
         words = line.rstrip()
         patient_data.append(words)
+    print(patient_data)
     return patient_data
 
 
@@ -47,6 +48,7 @@ def single_patient(data_input):
         data_input (list): all patient data
 
     Returns:
+        dict: organized patient data separated by patient
         JSON: categorized data and test results for each patient
     """
     new_patient = {}
@@ -72,6 +74,8 @@ def single_patient(data_input):
             save_json(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
+    print(new_patient)
+    return new_patient
 
 
 def extract_tsh(line):
