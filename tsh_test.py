@@ -2,7 +2,7 @@
 
 
 def read_txt(input_txt):
-    """Read txt file of patient data
+    """Read text file of patient data
 
     Patient data file contains information for an unspecified
     number of patients, including name, age, gender, and TSH
@@ -22,7 +22,7 @@ def read_txt(input_txt):
 
 
 def edit_txt(lines):
-    """Edit txt file of patient data to remove \n
+    """Edit text file of patient data to remove \n
 
     Patient data file contains information for an unspecified
     number of patients with each line of text separated by a
@@ -51,6 +51,7 @@ def single_patient(data_input):
         data_input (list): all patient data
 
     Returns:
+        dict: organized patient data separated by patient
         JSON: categorized data and test results for each patient
     """
     new_patient = {}
@@ -76,6 +77,7 @@ def single_patient(data_input):
             save_json(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
+    return new_patient
 
 
 def extract_tsh(line):
