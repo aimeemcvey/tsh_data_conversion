@@ -2,6 +2,15 @@
 
 
 def read_txt():
+    """Read txt file of patient data
+
+    Patient data file contains information for an unspecified
+    number of patients, including name, age, gender, and TSH
+    test results.
+
+    Returns:
+        list: all patient data without newlines
+    """
     with open("sample_data.txt", "r+") as f:
         lines = f.readlines()
     patient_data = edit_txt(lines)
@@ -9,6 +18,18 @@ def read_txt():
 
 
 def edit_txt(lines):
+    """Edit txt file of patient data to remove \n
+
+    Patient data file contains information for an unspecified
+    number of patients with each line of text separated by a
+    newline.
+
+    Args:
+        lines (list): all patient data
+
+    Returns:
+        list: all patient data without newlines
+    """
     patient_data = list()
     for line in lines:
         words = line.rstrip()
@@ -17,6 +38,17 @@ def edit_txt(lines):
 
 
 def single_patient(data_input):
+    """Parse patient data into specified categories
+
+    Patient data file must be separated into First Name, Last
+    Name, Age, Gender, Diagnosis, and TSH test results.
+
+    Args:
+        data_input (list): all patient data
+
+    Returns:
+        JSON: categorized data and test results for each patient
+    """
     new_patient = {}
     patient_number = 0
     line_number = 0
@@ -43,6 +75,18 @@ def single_patient(data_input):
 
 
 def extract_tsh(line):
+    """Cleans TSH txt line to remove 'header' and convert data type
+
+    TSH test results include levels of Thyroid Stimulating
+    Hormone (TSH) in the blood. Several levels were collected
+    for each patient.
+
+    Args:
+        line (str): TSH txt file with format "tsh, 1, 2, 3, etc"
+
+    Returns:
+        list: TSH test results as list of floats
+    """
     line = line.split(",")
     line.pop(0)  # get rid of TSH
     line = [float(i) for i in line]
@@ -51,6 +95,19 @@ def extract_tsh(line):
 
 
 def diagnose_tsh(line):
+    """Uses TSH data to diagnose hypo- and hyperthyroidism
+
+    Any test result < 1.0 indicates hyperthyroidism, while any
+    test result > 4.0 indicates hypothyroidism. Normal thyroid
+    function is defined as all blood TSH levels between
+    1.0 and 4.0, inclusive.
+
+    Args:
+        line (list): blood TSH levels as floats
+
+    Returns:
+        string: TSH diagnosis
+    """
     max_val = max(line)
     min_val = min(line)
     if min_val < 1.0:
@@ -63,6 +120,19 @@ def diagnose_tsh(line):
 
 
 def save_json(patient):
+    """Saves each patient's data in JSON format
+
+    Patient data is saved under 'FirstName-LastName.json'
+    format with the following info: First Name (str), Last
+    Name (str), Age (int), Gender (str), Diagnosis (str),
+    TSH (list of floats).
+
+    Args:
+        patient (dict): Patient information separated into keys-value pairs
+
+    Returns:
+        JSON: categorized data and test results for each patient
+    """
     import json
     first_name = patient.get("First Name")
     last_name = patient.get("Last Name")
