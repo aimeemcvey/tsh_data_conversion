@@ -27,8 +27,15 @@ def test_tsh_test_normal(a, expected):
     assert answer == expected
 
 
-def test_extract_tsh():
+def test_extract_tsh_correct():
     from tsh_test import extract_tsh
     answer = extract_tsh("TSH, 2, 4.0, 3, 5.2, 3.1")
     expected = [2.0, 3.0, 3.1, 4.0, 5.2]
     assert answer == expected
+
+
+def test_extract_tsh_failed():
+    from tsh_test import extract_tsh
+    answer = extract_tsh("TSH, 2, 4.0, 3, 5.2, 3.1")
+    expected = [4.0, 3.0, 3.1, 2.0, 5.2]
+    assert answer != expected
