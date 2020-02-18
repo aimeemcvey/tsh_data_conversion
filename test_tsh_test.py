@@ -41,6 +41,16 @@ def test_extract_tsh_failed():
     assert answer != expected
 
 
+def test_edit_txt():
+    from tsh_test import edit_txt
+    data_input = ['Joe Smith\n', '35\n', 'Male\n', 'TSH,4.1,6,7\n',
+                  'Jane Jones\n', '20\n', 'Female\n', 'TSH,1.3,3.5,2.4\n']
+    answer = edit_txt(data_input)
+    expected = ['Joe Smith', '35', 'Male', 'TSH,4.1,6,7', 'Jane Jones',
+                '20', 'Female', 'TSH,1.3,3.5,2.4']
+    assert answer == expected
+
+
 def test_single_patient_correct():
     from tsh_test import single_patient
     data_input = ['Joe Smith', '35', 'Male', 'TSH,4.1,6,7', 'Jane Jones',
@@ -51,7 +61,7 @@ def test_single_patient_correct():
             'Male', 'Diagnosis': 'hypothyroidism', 'TSH': [4.1, 6.0, 7.0]},
         1: {'First Name': 'Jane', 'Last Name': 'Jones', 'Age': 20, 'Gender':
             'Female', 'Diagnosis': 'normal thyroid function', 'TSH':
-            [1.3, 2.4, 3.5]}}
+                [1.3, 2.4, 3.5]}}
     assert answer == expected
 
 
@@ -65,5 +75,5 @@ def test_single_patient_failed():
             'Male', 'TSH': [4.1, 6.0, 7.0]},
         1: {'First Name': 'Jane', 'Last Name': 'Jones', 'Age': '20', 'Gender':
             'Female', 'Diagnosis': 'normal thyroid function', 'TSH':
-            [1.3, 2.4, 3.5]}}
+                [1.3, 2.4, 3.5]}}
     assert answer != expected

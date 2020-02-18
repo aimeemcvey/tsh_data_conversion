@@ -30,6 +30,7 @@ def edit_txt(lines):
     Returns:
         list: all patient data without newlines
     """
+    print(lines)
     patient_data = list()
     for line in lines:
         words = line.rstrip()
@@ -74,7 +75,6 @@ def single_patient(data_input):
             save_json(new_patient[patient_number])
             patient_number += 1
         line_number = line_number + 1
-    print(new_patient)
     return new_patient
 
 
