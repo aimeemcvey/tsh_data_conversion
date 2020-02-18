@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>tsh_test module &#8212; tsh_test exit() documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tsh-assignment-aimeemcvey" href="modules.html" />
+    <link rel="prev" title="test_tsh_test module" href="test_tsh_test.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-tsh_test">
+<span id="tsh-test-module"></span><h1>tsh_test module<a class="headerlink" href="#module-tsh_test" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="tsh_test.diagnose_tsh">
+<code class="sig-prename descclassname">tsh_test.</code><code class="sig-name descname">diagnose_tsh</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#tsh_test.diagnose_tsh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses TSH data to diagnose hypo- and hyperthyroidism</p>
+<p>Any test result &lt; 1.0 indicates hyperthyroidism, while any
+test result &gt; 4.0 indicates hypothyroidism. Normal thyroid
+function is defined as all blood TSH levels between
+1.0 and 4.0, inclusive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>line</strong> (<em>list</em>) – blood TSH levels as floats</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>TSH diagnosis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tsh_test.edit_txt">
+<code class="sig-prename descclassname">tsh_test.</code><code class="sig-name descname">edit_txt</code><span class="sig-paren">(</span><em class="sig-param">lines</em><span class="sig-paren">)</span><a class="headerlink" href="#tsh_test.edit_txt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edit txt file of patient data to remove</p>
+<p>Patient data file contains information for an unspecified
+number of patients with each line of text separated by a
+newline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lines</strong> (<em>list</em>) – all patient data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>all patient data without newlines</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tsh_test.extract_tsh">
+<code class="sig-prename descclassname">tsh_test.</code><code class="sig-name descname">extract_tsh</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#tsh_test.extract_tsh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleans TSH txt line to remove ‘header’ and convert data type</p>
+<p>TSH test results include levels of Thyroid Stimulating
+Hormone (TSH) in the blood. Several levels were collected
+for each patient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>line</strong> (<em>str</em>) – TSH txt file with format “tsh, 1, 2, 3, etc”</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>TSH test results as list of floats</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tsh_test.read_txt">
+<code class="sig-prename descclassname">tsh_test.</code><code class="sig-name descname">read_txt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsh_test.read_txt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read txt file of patient data</p>
+<p>Patient data file contains information for an unspecified
+number of patients, including name, age, gender, and TSH
+test results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>all patient data without newlines</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tsh_test.save_json">
+<code class="sig-prename descclassname">tsh_test.</code><code class="sig-name descname">save_json</code><span class="sig-paren">(</span><em class="sig-param">patient</em><span class="sig-paren">)</span><a class="headerlink" href="#tsh_test.save_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves each patient’s data in JSON format</p>
+<p>Patient data is saved under ‘FirstName-LastName.json’
+format with the following info: First Name (str), Last
+Name (str), Age (int), Gender (str), Diagnosis (str),
+TSH (list of floats).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>patient</strong> (<em>dict</em>) – Patient information separated into keys-value pairs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>categorized data and test results for each patient</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tsh_test.single_patient">
+<code class="sig-prename descclassname">tsh_test.</code><code class="sig-name descname">single_patient</code><span class="sig-paren">(</span><em class="sig-param">data_input</em><span class="sig-paren">)</span><a class="headerlink" href="#tsh_test.single_patient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse patient data into specified categories</p>
+<p>Patient data file must be separated into First Name, Last
+Name, Age, Gender, Diagnosis, and TSH test results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_input</strong> (<em>list</em>) – all patient data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>categorized data and test results for each patient</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">tsh_test</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="test_tsh_test.html">test_tsh_test module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tsh_test module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">tsh-assignment-aimeemcvey</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="test_tsh_test.html">test_tsh_test module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tsh_test module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="test_tsh_test.html" title="previous chapter">test_tsh_test module</a></li>
+      <li>Next: <a href="modules.html" title="next chapter">tsh-assignment-aimeemcvey</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Aimee McVey.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/tsh_test.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
