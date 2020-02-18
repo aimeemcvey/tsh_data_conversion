@@ -2,6 +2,15 @@
 
 
 def read_txt():
+    """ Read txt file of patient data
+
+    Patient data file contains information for an unspecified
+    number of patients, including name, age, gender, and TSH
+    test results.
+
+    Returns:
+        list: all patient data without newlines
+    """
     with open("sample_data.txt", "r+") as f:
         lines = f.readlines()
     patient_data = edit_txt(lines)
