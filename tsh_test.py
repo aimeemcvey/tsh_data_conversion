@@ -1,17 +1,20 @@
 # TSH_test.py
 
 
-def read_txt():
+def read_txt(input_txt):
     """Read text file of patient data
 
     Patient data file contains information for an unspecified
     number of patients, including name, age, gender, and TSH
     test results.
 
+    Args:
+        input_txt (.txt): text file of patient data
+
     Returns:
         list: all patient data without newlines
     """
-    with open("sample_data.txt", "r+") as f:
+    with open(input_txt, "r+") as f:
         lines = f.readlines()
     patient_data = edit_txt(lines)
     single_patient(patient_data)
@@ -146,4 +149,5 @@ def save_json(patient):
 
 
 if __name__ == "__main__":
-    read_txt()
+    input_txt = input("Enter .txt filename: ")
+    read_txt(input_txt)
